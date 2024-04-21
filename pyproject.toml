@@ -1,24 +1,23 @@
-[project]
-authors = [{ name = "yyhhenry", email = "yyhhenry@foxmail.com" }]
-dependencies = [
-  "torch==2.1.2",
-  "torchvision>=0.16.2",
-  "setuptools>=69.2.0",
-  "tqdm>=4.66.2",
-  "safetensors>=0.4.2",
-]
-description = "Default template for PDM package"
-license = { text = "MIT" }
+[tool.poetry]
+package-mode = false
 name = "torch-mnist-bench"
-readme = "README.md"
-requires-python = "==3.10.*"
 version = "0.1.0"
+description = ""
+authors = ["yyhhenry <yyhhenry@foxmail.com>"]
+readme = "README.md"
 
-[tool.pdm]
-distribution = false
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = { version = "2.1.2", source = "cu121" }
+torchvision = { version = "0.16.2", source = "cu121" }
+tqdm = "^4.66.2"
+safetensors = "^0.4.3"
 
-[[tool.pdm.source]]
-exclude_packages = ["*"]
-include_packages = ["torch", "torchvision"]
-name = "torch"
+[[tool.poetry.source]]
+name = "cu121"
 url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
